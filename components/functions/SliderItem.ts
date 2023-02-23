@@ -21,4 +21,4 @@ export const SliderItem : ISlider[] = [
       image: SlideFour,
       id: 4,
     }
-  ];
+];
