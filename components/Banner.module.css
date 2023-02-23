@@ -18,3 +18,11 @@
     opacity: 0.8;
 }
 
+@media screen and (max-width:710px) {
+    .Slider{    
+        height: 200px;
+    }
+    .image{ 
+        height: 200px;
+    }
+}
