@@ -1,0 +1,155 @@
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  padding: 0px 50px 0px 50px;
+  background-color: white;
+}
+
+.logo_container{
+  background-color: black;
+  height: 40px;
+  width: 150px;
+  color: white;
+  display: grid;
+  place-items: center;
+}
+
+.right_container{
+  display: flex;
+  justify-content: space-around;
+  gap: 50px;
+  height: 40px;
+}
+
+.search_container{
+  position: relative;
+}
+
+.search {
+  box-sizing:border-box;
+  padding-left: 30px;
+  border-radius: 10px;
+  border: none;
+  width: 35vw;
+  background-color: #EFEBFF;
+  outline: none;
+  height: 40px;
+}
+
+.search_button{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 40px;
+  width: 40px;
+  font-size: 25px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 50%;
+  background-color: #EFEBFF;
+  cursor: pointer;
+
+
+  transform: scale(100%);
+  transition: .2s ease;
+}
+
+.search_button:hover{
+  transform: scale(85%);
+}
+
+.like_button{
+  display: grid;
+  place-items: center;
+  width: 40px;
+  font-size: 20px;
+  border-radius: 50%;
+  border: none;
+  background-color: #EFEBFF;
+  cursor: pointer;
+
+
+  transform: rotate(0);
+  transition: .3s ease;
+}
+
+.like_button:hover {
+  transform: rotate(360deg);
+
+}
+
+
+
+
+/* mobile version styles */
+
+.navbar_mobile{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 90px;
+  padding: 0px 50px 0px 50px;
+  background-color: white;
+}
+
+
+.logo_disable{
+  display: none;
+}
+
+.mobile{
+  position: relative;
+}
+
+.right_container{
+  display: flex;
+  justify-content: space-around;
+  gap: 50px;
+  height: 40px;
+  /* width: 100%; */
+  background-color: white;
+}
+
+.search_mobile{
+  box-sizing:border-box;
+  padding-left: 30px;
+  border-radius: 10px;
+  border: none;
+  width: 65vw;
+  background-color: #EFEBFF;
+  outline: none;
+  height: 40px;
+}
+
+.disable{
+  display: none;
+}
+
+
+/* media queries */
+
+
+@media screen and (max-width: 640px) {
+
+  .search_container {
+    display: none;
+  }
+
+  .navbar_container{
+    padding: 0 25px 0 25px;
+  }
+
+  .right_container{
+    gap: 20px;
+  }
+}
+
+@media screen and (min-width: 641px) {
+
+  .mobile{
+    display: none;
+  }
+}

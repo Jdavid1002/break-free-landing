@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar'
 import Banner from '@/components/Banner'
 import { NextFont } from '@next/font'
 
+
 const primaryFont : NextFont = Open_Sans({
   subsets: ['latin'],
   weight: '400',
@@ -11,7 +12,7 @@ const primaryFont : NextFont = Open_Sans({
 export default function Home() {
   return (
     <main>
-      DEVELOPMENT
+      {/* DEVELOPMENT */}
 
       <Navbar 
         primaryFont={primaryFont}
