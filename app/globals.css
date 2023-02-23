@@ -4,5 +4,5 @@ body , *{
 }
 /* @INFO Pisar clases de los puntos de swiper */
 .swiper-pagination-bullet-active {
-  background-color: #ffffff !important;
+  background-color: #fccfdc !important;
 }

@@ -1,0 +1,12 @@
+.Catalogue{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+
+.ContainerTarget{  
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 120px);
+}
