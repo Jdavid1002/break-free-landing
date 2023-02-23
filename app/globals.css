@@ -2,3 +2,6 @@ body , *{
   padding: 0px;
   margin: 0px;
 }
+.swiper-pagination-bullet-active {
+  background-color: #ffffff !important;
+}
