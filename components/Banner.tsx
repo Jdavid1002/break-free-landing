@@ -1,48 +1,26 @@
 "use client";
 
 import { NextFont } from "@next/font";
-import { Swiper, SwiperSlide } from "swiper/react";
+import Image, { StaticImageData } from 'next/image'
 
+import { Swiper, SwiperSlide } from "swiper/react";
 import {Pagination, Autoplay } from 'swiper';
+
+import { SliderItem } from "./functions/SliderItem";
+
+import Styles from './Banner.module.css'
 import "swiper/swiper.min.css";
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-import Image from 'next/image'
-import Styles from './Banner.module.css'
-import SlideOne from './images/SlideOne.jpg'
-import SlideTwo from './images/SlideTwo.jpg'
-import SlideThree from './images/SlideThree.jpg'
-import SlideFour from './images/SlideFour.jpg'
-
-
 interface IBanner {
   primaryFont: NextFont;
 }
-interface ISlider { 
-  image: any
+export interface ISlider { 
+  image: StaticImageData
   id: number
 }
-
-const SliderItem = [
-  {
-    image: SlideOne,
-    id: 1,
-  },
-  {
-    image: SlideTwo,
-    id: 2,
-  },{
-    image: SlideThree,
-    id: 3,
-  },
-  {
-    image: SlideFour,
-    id: 4,
-  }
-];
-
 
 const Banner = (props: IBanner) => {
   const { primaryFont } = props;
