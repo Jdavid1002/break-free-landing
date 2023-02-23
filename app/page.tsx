@@ -1,6 +1,7 @@
-import {Open_Sans} from "@next/font/google";
 import Navbar from "@/components/Navbar";
 import Banner from "@/components/Banner";
+import Catalogue from '../components/Catalogue'
+import {Open_Sans} from "@next/font/google";
 import { NextFont } from "@next/font";
 
 
@@ -14,7 +15,8 @@ export default function Home() {
     <main>
       {/*DEVELOPMENT*/}
       <Navbar primaryFont={primaryFont} />
-      <Banner primaryFont={primaryFont}/>
+      <Banner primaryFont={primaryFont} />
+      <Catalogue primaryFont={primaryFont}/>
     </main>
   );
 }
