@@ -17,8 +17,6 @@ const Navbar = (props: INavbar) => {
   const [mobile, setMobile] = useState(false);
   const [text, setText] = useLocalStorage('text_input', '')
   
-  console.log(text);
-  
 
   const clickMobile = () => {
     setMobile(!mobile);
@@ -69,6 +67,7 @@ const Navbar = (props: INavbar) => {
             type="text"
             placeholder="Busca tus prendas favoritas, blusas, pantalones..."
             maxLength={30}
+            onChange={(e) => setText(e.target.value)}
           />
 
           <button onClick={clickMobile} className={styles.search_button}>
