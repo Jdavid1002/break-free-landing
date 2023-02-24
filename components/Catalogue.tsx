@@ -1,10 +1,10 @@
 'use client'
+
 import { NextFont } from "@next/font";
 import { FiHeart } from "react-icons/fi";
 import {BsFillHeartFill} from 'react-icons/bs'
 import Image, { StaticImageData } from 'next/image'
 import {CatalogueItems} from './functions/CatalogueItems'
-
 import Styles from './Catalogue.module.css'
 
 
