@@ -16,12 +16,34 @@
 
 /*Css Cristian*/
 
+.filter_container{
+    height: 500px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
+}
 
+.filter_button{
+    height: 80px;
+    background-color: #f2f2f2;
+    border: none;
+    border-radius: 15px;
+    font-weight: bolder;
+    cursor: pointer;
 
+    transform: scale(100%);
+    transition: .2s ease;
+}
 
+.filter_button:hover{
+    transform: scale(85%);
+}
 
-
+.filter_button:hover{
+    background-color: #c8baff;
+}
 
 
 /*Css Maicol*/

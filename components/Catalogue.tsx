@@ -5,12 +5,18 @@ import { FiHeart } from "react-icons/fi";
 import {BsFillHeartFill} from 'react-icons/bs'
 import Image, { StaticImageData } from 'next/image'
 import {CatalogueItems} from './functions/CatalogueItems'
-import Styles from './Catalogue.module.css'
+import { FiltersItems } from "./functions/Filters";
 
+import Styles from './Catalogue.module.css'
 
 
 interface IBanner {
   primaryFont: NextFont;
+}
+
+export interface IFilters {
+  id: number
+  name: string
 }
 
 export interface ICatalogue { 
@@ -22,8 +28,12 @@ export interface ICatalogue {
 }
 
 const Catalogue = (props:IBanner) => {
-
   const {primaryFont} = props
+  // const [selection, setSelection] = useState(false)
+
+  // const button_selection = () => {
+  //   setSelection(!selection)
+  // }
 
   const setFav = (item:ICatalogue) => {  
     if (item.favorite === false) {  
@@ -34,13 +44,18 @@ const Catalogue = (props:IBanner) => {
   return (
     <div className={`${primaryFont.className} ${Styles.Catalogue}`}>
       <div className={Styles.ContainFiltersTargets}>
-        <div style={{width: '400px',background: '#000000'}}>
+        <div className={Styles.filter_container}>
           {/*Cristian*/}
-          <p>one</p>
-          <p>TWO</p>
-          <p>Three</p>
-          <p>Four</p>
+          {FiltersItems.map((item) => (
+            <button 
+              key={item.id}
+              className={`${primaryFont.className} ${Styles.filter_button}`}
+            >
+              {item.name}
+            </button>
+          ))}
         </div>
+
 
         <div className={Styles.ContainTargets}>
           <div className={Styles.TargetTitle}>
