@@ -1,9 +1,11 @@
+/* General Styles */
+
 .navbar{
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 90px;
-  padding: 0px 50px 0px 50px;
+  padding: 0px 60px 0px 60px;
   background-color: white;
 }
 
@@ -16,6 +18,12 @@
   place-items: center;
 }
 
+
+
+/* Desktop Styles */
+
+    /* Search Styles */
+
 .right_container{
   display: flex;
   justify-content: space-around;
@@ -27,7 +35,7 @@
   position: relative;
 }
 
-.search {
+.search{
   box-sizing:border-box;
   padding-left: 30px;
   border-radius: 10px;
@@ -71,6 +79,10 @@
   }
 }
 
+
+
+/* Likes Styles */
+
 .like_button{
   display: grid;
   place-items: center;
@@ -78,7 +90,7 @@
   font-size: 20px;
   border-radius: 50%;
   border: none;
-  background-color: heart;
+  background-color:#EFEBFF;
   cursor: pointer;
 
 
@@ -93,45 +105,10 @@
 
 
 
-
-/* mobile version styles */
-
-.navbar_mobile{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 90px;
-  padding: 0px 50px 0px 50px;
-  background-color: white;
-}
-
-
-.logo_disable{
-  display: none;
-}
-
-.mobile{
-  position: relative;
-}
-
-.right_container{
-  display: flex;
-  justify-content: space-around;
-  gap: 50px;
-  height: 40px;
-  /* width: 100%; */
-  background-color: white;
-}
+/* Mobile Version Styles */
 
 .search_mobile{
-  box-sizing:border-box;
-  padding-left: 30px;
-  border-radius: 10px;
-  border: none;
-  width: 65vw;
-  background-color: #EFEBFF;
-  outline: none;
-  height: 40px;
+  width: 71.5vw;
 }
 
 .disable{
@@ -144,11 +121,15 @@
 
 @media screen and (max-width: 640px) {
 
-  .search_container {
+  .logo_desktop{
     display: none;
   }
 
-  .navbar_container{
+  .search_container_desktop {
+    display: none;
+  }
+
+  .navbar{
     padding: 0 25px 0 25px;
   }
 
@@ -159,7 +140,11 @@
 
 @media screen and (min-width: 641px) {
 
-  .mobile{
+  .search_container_mobile{
+    display: none;
+  }
+
+  .logo_mobile{
     display: none;
   }
 }
