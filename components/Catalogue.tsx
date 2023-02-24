@@ -2,11 +2,12 @@
 
 import { NextFont } from "@next/font";
 import { FiHeart } from "react-icons/fi";
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import {BsFillHeartFill} from 'react-icons/bs'
 import Image, { StaticImageData } from 'next/image'
 import {CatalogueItems} from './functions/CatalogueItems'
 import { FiltersItems } from "./functions/Filters";
+import useLocalStorage from 'use-local-storage'
 
 import Styles from './Catalogue.module.css'
 
@@ -40,6 +41,18 @@ const Catalogue = (props: IBanner) => {
     
   //Metemos el catalogo en un state para poder modificarlo
   const [Fav, setFav] = useState<ICatalogue[]>(CatalogueItems)
+  
+
+
+  //me traigo lodel input que guardo cristian
+  const [Search] = useLocalStorage("text_input", "");
+
+
+  //guardo el catalogo de favoritos
+
+  const [catalogueFav, setCatalogueFav] = useLocalStorage("CatalogueFav",'')
+
+
 
   //hacemos una funcion que va recibir un item al hacer click
   const FavoriteEnable = (selected: ICatalogue) => {  
@@ -52,16 +65,40 @@ const Catalogue = (props: IBanner) => {
           ...item,
           favorite: !item.favorite
         }
-
         //en caso de que no sea igual me retorna el item
       }else {
         return item  
       }
     })
-
     //seteamos Fav con el nuevo catalogo
     setFav(newfav)
+    FavoriteItems()
   }
+
+
+  const FavoriteItems = () => { 
+    const favotiteItems = Fav.filter(item => item.favorite === true)
+    setCatalogueFav(JSON.stringify(favotiteItems))
+  }
+
+
+  // const HandleFilter = () => {  
+  //   const searchFilter = Fav.filter(item => {
+  //     if (item?.name?.includes(Search)) { 
+  //       return true
+  //     } else {  
+  //       return false
+  //     }
+  //   })
+  // }
+
+  
+  
+  
+  
+
+  
+  
   
   return (
     <div className={`${primaryFont.className} ${Styles.Catalogue}`}>
