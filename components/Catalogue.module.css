@@ -66,6 +66,12 @@
     cursor: pointer;
 }
 
+.liked_button{  
+    font-size: 30px;
+    cursor: pointer;
+    color: #c8baff;
+}
+
 .like_button:hover{ 
     animation-name: left;
     animation-duration: 2s;

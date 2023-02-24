@@ -25,14 +25,14 @@ export const CatalogueItems: ICatalogue[] = [
     image: ThreeClothe,
     id: 3,
     price: "20.000",
-    favorite: false,
+    favorite: true,
     name:'Camisa Manga larga'
   },
   {
     image: FourClothe,
     id: 4,
     price: "15.000",
-    favorite: false,
+    favorite: true,
     name:'Esqueleto'
   },
 ];

@@ -1,5 +1,7 @@
+'use client'
 import { NextFont } from "@next/font";
 import { FiHeart } from "react-icons/fi";
+import {BsFillHeartFill} from 'react-icons/bs'
 import Image, { StaticImageData } from 'next/image'
 import {CatalogueItems} from './functions/CatalogueItems'
 
@@ -23,6 +25,12 @@ const Catalogue = (props:IBanner) => {
 
   const {primaryFont} = props
 
+  const setFav = (item:ICatalogue) => {  
+    if (item.favorite === false) {  
+      
+    }
+  }
+  
   return (
     <div className={`${primaryFont.className} ${Styles.Catalogue}`}>
       <div className={Styles.ContainFiltersTargets}>
@@ -43,7 +51,9 @@ const Catalogue = (props:IBanner) => {
             {CatalogueItems.map((item) => (
               <div key={item.id} className={Styles.Target}>
                 <div className={Styles.containLikeButton}>
-                  <FiHeart className={Styles.like_button} />
+                  {!item.favorite ? <FiHeart onClick={()=>setFav(item)} className={Styles.like_button} /> : 
+                    <BsFillHeartFill onClick={()=>setFav(item)} className={Styles.liked_button}/>
+                  }
                 </div>
                 <Image
                   className={Styles.imageTarget}
