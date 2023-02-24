@@ -2,6 +2,7 @@
 
 import { NextFont } from "@next/font";
 import { FiHeart } from "react-icons/fi";
+import {useState} from 'react'
 import {BsFillHeartFill} from 'react-icons/bs'
 import Image, { StaticImageData } from 'next/image'
 import {CatalogueItems} from './functions/CatalogueItems'
@@ -27,18 +28,39 @@ export interface ICatalogue {
   name: string
 }
 
-const Catalogue = (props:IBanner) => {
+const Catalogue = (props: IBanner) => {
+
+  
   const {primaryFont} = props
   // const [selection, setSelection] = useState(false)
-
+  
   // const button_selection = () => {
   //   setSelection(!selection)
   // }
+    
+  //Metemos el catalogo en un state para poder modificarlo
+  const [Fav, setFav] = useState<ICatalogue[]>(CatalogueItems)
 
-  const setFav = (item:ICatalogue) => {  
-    if (item.favorite === false) {  
-      
-    }
+  //hacemos una funcion que va recibir un item al hacer click
+  const FavoriteEnable = (selected: ICatalogue) => {  
+    //creamos constante la cual va mapear el catalogo 
+    const newfav = Fav.map(item => { 
+      //si item.id es igual al selected.id
+      if (item.id === selected.id) {
+        //me retorna los datos del item y favorite lo pasa al contrario de item.favorite
+        return {  
+          ...item,
+          favorite: !item.favorite
+        }
+
+        //en caso de que no sea igual me retorna el item
+      }else {
+        return item  
+      }
+    })
+
+    //seteamos Fav con el nuevo catalogo
+    setFav(newfav)
   }
   
   return (
@@ -63,11 +85,13 @@ const Catalogue = (props:IBanner) => {
             <p>View more</p>
           </div>
           <div className={Styles.ContainTarget}>
-            {CatalogueItems.map((item) => (
+
+            {/*Mapeamos el catalogo*/}
+            {Fav.map((item) => (
               <div key={item.id} className={Styles.Target}>
                 <div className={Styles.containLikeButton}>
-                  {!item.favorite ? <FiHeart onClick={()=>setFav(item)} className={Styles.like_button} /> : 
-                    <BsFillHeartFill onClick={()=>setFav(item)} className={Styles.liked_button}/>
+                  {!item.favorite? <FiHeart onClick={()=>FavoriteEnable(item)} className={Styles.like_button} /> : 
+                    <BsFillHeartFill onClick={()=>FavoriteEnable(item)} className={Styles.liked_button}/>
                   }
                 </div>
                 <Image
