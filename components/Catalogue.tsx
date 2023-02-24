@@ -1,3 +1,5 @@
+"use client"
+
 import { NextFont } from "@next/font";
 import { FiHeart } from "react-icons/fi";
 import Image, { StaticImageData } from 'next/image'
