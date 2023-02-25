@@ -8,7 +8,7 @@ export const FiltersItems: IFilters[] = [
   },
   {
     id: 'Camisa',
-    name: 'Camisa 👕',
+    name: 'CAMISA 👕',
     active: false
   },
   {

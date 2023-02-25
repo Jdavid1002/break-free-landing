@@ -117,7 +117,21 @@ const Catalogue = (props: IBanner) => {
     setSelect(newSelect)
     setFilterActive(selected.id)
   }
-  
+
+
+  let filteredTargets: any = []
+
+  if (filterActive === 'Todo'){
+    filteredTargets = Fav
+  }else{
+    filteredTargets = Fav.filter(item => {
+      const filteredName = item.name.toLowerCase()
+      const filterSelected = filterActive.toLowerCase()
+
+      return filteredName === filterSelected
+    })
+  }
+   
   
   
   return (
@@ -148,7 +162,7 @@ const Catalogue = (props: IBanner) => {
           <div className={Styles.ContainTarget}>
 
             {/*Mapeamos el catalogo*/}
-            {Fav.map((item) => (
+            {filteredTargets.map((item: ICatalogue) => (
               <div key={item.id} className={Styles.Target}>
                 <div className={Styles.containLikeButton}>
                   {!item.favorite? <FiHeart onClick={()=>FavoriteEnable(item)} className={Styles.like_button} /> : 

@@ -6,7 +6,7 @@ import { BiSearchAlt } from "react-icons/bi";
 import styles from "@/components/Navbar.module.css";
 import { NextFont } from "@next/font";
 import { useState } from "react";
-import { ICatalogue } from "./Catalogue";
+import Favoritos from "./Favoritos";
 
 export interface INavbar {
   primaryFont: NextFont;
