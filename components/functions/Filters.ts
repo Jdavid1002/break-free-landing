@@ -2,23 +2,28 @@ import {IFilters} from "../Catalogue";
 
 export const FiltersItems: IFilters[] = [
   {
-    id: 1,
-    name: 'TODO 🔥'
+    id: 'Todo',
+    name: 'TODO 🔥',
+    active: true
   },
   {
-    id: 2,
-    name: 'Camisa 👕'
+    id: 'Camisa',
+    name: 'Camisa 👕',
+    active: false
   },
   {
-    id: 3,
-    name: 'CAMISA MANGA LARGA 🧥'
+    id: 'Camisa Manga larga',
+    name: 'CAMISA MANGA LARGA 🧥',
+    active: false
   },
   {
-    id: 4,
-    name: 'CAMISA PERLADA 🌟'
+    id: 'Camisa Perlada',
+    name: 'CAMISA PERLADA 🌟',
+    active: false
   },
   {
-    id: 5,
-    name: 'ESQUELETO 🎽'
+    id: 'Esqueleto',
+    name: 'ESQUELETO 🎽',
+    active: false
   }
 ]
