@@ -43,8 +43,7 @@ const Catalogue = (props: IBanner) => {
   
 
 
-  //me traigo lodel input que guardo cristian
-  const [Search] = useLocalStorage("text_input", "");
+  
 
 
   //guardo el catalogo de favoritos
@@ -74,30 +73,27 @@ const Catalogue = (props: IBanner) => {
     FavoriteItems()
   }
 
-
+  //enviar favoritos localStorarge
   const FavoriteItems = () => { 
     const favotiteItems = Fav.filter(item => item.favorite === true)
     setCatalogueFav(JSON.stringify(favotiteItems))
   }
 
 
-  // const HandleFilter = () => {  
-  //   const searchFilter = Fav.filter(item => {
-  //     if (item?.name?.includes(Search)) { 
-  //       return true
-  //     } else {  
-  //       return false
-  //     }
-  //   })
-  // }
+  
 
 
 
   // Codigo para el funcionamiento de los filtros
-
+  
+  
   const [select, setSelect] = useState<IFilters[]>(FiltersItems)
   const [filterActive, setFilterActive] = useState('Todo')
 
+  //me traigo lodel input que guardo cristian
+  const [Search] = useLocalStorage<string>("text_input", "");
+  
+  const [prueba, setPrueba] = useState("")
   
   
   const selectionActive = (selected: IFilters) => {  
@@ -116,23 +112,37 @@ const Catalogue = (props: IBanner) => {
     })
     setSelect(newSelect)
     setFilterActive(selected.id)
+    setPrueba("")
   }
 
+  
 
-  let filteredTargets: any = []
+  let filteredTargets: ICatalogue[] = []
 
-  if (filterActive === 'Todo'){
-    filteredTargets = Fav
+  if (filterActive === 'Todo') {
+    if (prueba !== "") {
+      filteredTargets = Fav.filter(item => {
+        if (item?.name?.toLowerCase().includes(Search.toLowerCase())) {
+          return true
+        } else {
+          return false
+        }
+      })
+    } else {  
+      filteredTargets = Fav
+    }
   }else{
     filteredTargets = Fav.filter(item => {
       const filteredName = item.name.toLowerCase()
       const filterSelected = filterActive.toLowerCase()
 
-      return filteredName === filterSelected
+      if (filteredName === filterSelected) { 
+        return filteredName
+      } else {
+        console.log('error')
+      }
     })
   }
-   
-  
   
   return (
     <div className={`${primaryFont.className} ${Styles.Catalogue}`}>
