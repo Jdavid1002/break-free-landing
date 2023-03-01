@@ -91,11 +91,8 @@ const Catalogue = (props: IBanner) => {
   const [filterActive, setFilterActive] = useState('Todo')
 
   //me traigo lodel input que guardo cristian
-  const [Search] = useLocalStorage<string>("text_input", "");
-  
-  const [prueba, setPrueba] = useState("")
-  
-  
+  const [Search, setSearch] = useLocalStorage<string>("text_input", '');
+
   const selectionActive = (selected: IFilters) => {  
     const newSelect = select.map(item => { 
       if (item.id === selected.id) {
@@ -112,7 +109,7 @@ const Catalogue = (props: IBanner) => {
     })
     setSelect(newSelect)
     setFilterActive(selected.id)
-    setPrueba("")
+    setSearch('')
   }
 
   
@@ -120,17 +117,7 @@ const Catalogue = (props: IBanner) => {
   let filteredTargets: ICatalogue[] = []
 
   if (filterActive === 'Todo') {
-    if (prueba !== "") {
-      filteredTargets = Fav.filter(item => {
-        if (item?.name?.toLowerCase().includes(Search.toLowerCase())) {
-          return true
-        } else {
-          return false
-        }
-      })
-    } else {  
-      filteredTargets = Fav
-    }
+    filteredTargets = Fav
   }else{
     filteredTargets = Fav.filter(item => {
       const filteredName = item.name.toLowerCase()
@@ -143,6 +130,14 @@ const Catalogue = (props: IBanner) => {
       }
     })
   }
+
+  const newFliterWithSearch = filteredTargets?.filter(item => {
+    if(item?.name?.toLocaleLowerCase().includes(Search.toLocaleLowerCase())){
+      return true 
+    }else{
+      return false 
+    }
+  })
   
   return (
     <div className={`${primaryFont.className} ${Styles.Catalogue}`}>
@@ -172,7 +167,7 @@ const Catalogue = (props: IBanner) => {
           <div className={Styles.ContainTarget}>
 
             {/*Mapeamos el catalogo*/}
-            {filteredTargets.map((item: ICatalogue) => (
+            {newFliterWithSearch.map((item: ICatalogue) => (
               <div key={item.id} className={Styles.Target}>
                 <div className={Styles.containLikeButton}>
                   {!item.favorite? <FiHeart onClick={()=>FavoriteEnable(item)} className={Styles.like_button} /> : 
