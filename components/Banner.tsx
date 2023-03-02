@@ -4,7 +4,7 @@ import { NextFont } from "@next/font";
 import Image, { StaticImageData } from 'next/image'
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import {Pagination, Autoplay } from 'swiper';
+import {Pagination, Autoplay} from 'swiper';
 
 import { SliderItem } from "./functions/SliderItem";
 
@@ -28,11 +28,11 @@ const Banner = (props: IBanner) => {
   return (
     <div className={`${primaryFont.className} ${Styles.ContainerSlider}`}>
       <Swiper
-        modules={[Pagination,Autoplay]}
+        modules={[Pagination, Autoplay]}
         className={Styles.Slider}
         slidesPerView={1}
-        autoplay={{delay: 3000}}
-        pagination={{clickable: true}}
+        autoplay={{ delay: 3000 }}
+        pagination={{ clickable: true }}
       >
         {SliderItem.map((item:ISlider) => (
           <SwiperSlide className={Styles.SwiperSlide} key={item.id}>

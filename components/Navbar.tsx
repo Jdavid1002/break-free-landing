@@ -6,7 +6,7 @@ import { BiSearchAlt } from "react-icons/bi";
 import styles from "@/components/Navbar.module.css";
 import { NextFont } from "@next/font";
 import { useState } from "react";
-import Favoritos from "./Favoritos";
+
 
 export interface INavbar {
   primaryFont: NextFont;
@@ -24,7 +24,7 @@ const Navbar = (props: INavbar) => {
     setMobile(!mobile);
   };
 
-
+  
   return (
     <div className={styles.navbar}>
       <div className={`${styles.logo_container} ${styles.logo_desktop} ${primaryFont.className}`}>

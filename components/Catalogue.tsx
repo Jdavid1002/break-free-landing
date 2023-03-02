@@ -2,7 +2,7 @@
 
 import { NextFont } from "@next/font";
 import { FiHeart } from "react-icons/fi";
-import {useState,useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import {BsFillHeartFill} from 'react-icons/bs'
 import Image, { StaticImageData } from 'next/image'
 import {CatalogueItems} from './functions/CatalogueItems'
@@ -47,7 +47,6 @@ const Catalogue = (props: IBanner) => {
 
 
   //guardo el catalogo de favoritos
-
   const [catalogueFav, setCatalogueFav] = useLocalStorage("CatalogueFav",'')
 
 
@@ -80,10 +79,6 @@ const Catalogue = (props: IBanner) => {
   }
 
 
-  
-
-
-
   // Codigo para el funcionamiento de los filtros
   
   
@@ -110,14 +105,19 @@ const Catalogue = (props: IBanner) => {
     setSelect(newSelect)
     setFilterActive(selected.id)
     setSearch('')
-  }
+  } 
+  
+  
 
+  useEffect(() => { 
+    setSearch('')
+  })
   
 
   let filteredTargets: ICatalogue[] = []
 
   if (filterActive === 'Todo') {
-    filteredTargets = Fav
+    filteredTargets = Fav;      
   }else{
     filteredTargets = Fav.filter(item => {
       const filteredName = item.name.toLowerCase()
@@ -130,14 +130,39 @@ const Catalogue = (props: IBanner) => {
       }
     })
   }
+  
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     console.log(Search);
+  //   },1000)
+  // }, [Search]);
 
-  const newFliterWithSearch = filteredTargets?.filter(item => {
-    if(item?.name?.toLocaleLowerCase().includes(Search.toLocaleLowerCase())){
-      return true 
-    }else{
-      return false 
-    }
-  })
+  // useEffect(() => {
+  //   setInterval(() => { 
+  //     console.log(Search);
+  //   },1000)
+  // }, [Search]);
+  
+
+  // const prueba = (Search:string) => {
+  //   if (Search !== '') {
+  //     filteredTargets = Fav.filter(item => {
+  //       if (item?.name?.toLocaleLowerCase().includes(Search.toLocaleLowerCase())) {
+  //         return true
+  //       } else {
+  //         return false
+  //       }
+  //     })
+  //   }
+  // }
+  
+  // const newFliterWithSearch = filteredTargets?.filter(item => {
+  //   if(item?.name?.toLocaleLowerCase().includes(Search.toLocaleLowerCase())){
+  //     return true 
+  //   }else{
+  //     return false 
+  //   }
+  // })
   
   return (
     <div className={`${primaryFont.className} ${Styles.Catalogue}`}>
@@ -167,7 +192,7 @@ const Catalogue = (props: IBanner) => {
           <div className={Styles.ContainTarget}>
 
             {/*Mapeamos el catalogo*/}
-            {newFliterWithSearch.map((item: ICatalogue) => (
+            {filteredTargets.map((item: ICatalogue) => (
               <div key={item.id} className={Styles.Target}>
                 <div className={Styles.containLikeButton}>
                   {!item.favorite? <FiHeart onClick={()=>FavoriteEnable(item)} className={Styles.like_button} /> : 

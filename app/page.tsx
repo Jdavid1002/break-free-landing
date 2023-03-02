@@ -10,6 +10,11 @@ const primaryFont : NextFont = Open_Sans({
   weight: '400',
 })
 
+const keyupenter = (e:any) => { 
+  if (e.key === 'Enter') {
+    alert('Enter is pressed!');
+  }
+}
 
 
 export default function Home() {
