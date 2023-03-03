@@ -35,8 +35,7 @@ const Catalogue = (props: IBanner) => {
   
   const {primaryFont} = props
   
-
-
+  
     
   //Metemos el catalogo en un state para poder modificarlo
   const [Fav, setFav] = useState<ICatalogue[]>(CatalogueItems)
@@ -131,6 +130,8 @@ const Catalogue = (props: IBanner) => {
       return filteredName === filterSelected
     })
   }
+
+  console.log(catalogueFav);
    
   
   

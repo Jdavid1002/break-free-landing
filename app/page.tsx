@@ -11,7 +11,6 @@ const primaryFont : NextFont = Open_Sans({
 })
 
 
-
 export default function Home() {
   return (
     <main>
@@ -19,6 +18,7 @@ export default function Home() {
       <Navbar primaryFont={primaryFont} />
       <Banner primaryFont={primaryFont} />
       <Catalogue primaryFont={primaryFont}/>
+
     </main>
   );
 }
