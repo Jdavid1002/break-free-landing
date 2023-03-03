@@ -2,7 +2,7 @@
 
 import { NextFont } from "@next/font";
 import { FiHeart } from "react-icons/fi";
-import {useState,useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import {BsFillHeartFill} from 'react-icons/bs'
 import Image, { StaticImageData } from 'next/image'
 import {CatalogueItems} from './functions/CatalogueItems'
@@ -42,12 +42,10 @@ const Catalogue = (props: IBanner) => {
   
 
 
-  //me traigo lodel input que guardo cristian
-  const [Search] = useLocalStorage("text_input", "");
+  
 
 
   //guardo el catalogo de favoritos
-
   const [catalogueFav, setCatalogueFav] = useLocalStorage("CatalogueFav",'')
 
 
@@ -73,32 +71,22 @@ const Catalogue = (props: IBanner) => {
     FavoriteItems()
   }
 
-
+  //enviar favoritos localStorarge
   const FavoriteItems = () => { 
     const favotiteItems = Fav.filter(item => item.favorite === true)
     setCatalogueFav(JSON.stringify(favotiteItems))
   }
 
 
-  // const HandleFilter = () => {  
-  //   const searchFilter = Fav.filter(item => {
-  //     if (item?.name?.includes(Search)) { 
-  //       return true
-  //     } else {  
-  //       return false
-  //     }
-  //   })
-  // }
-
-
-
   // Codigo para el funcionamiento de los filtros
-
+  
+  
   const [select, setSelect] = useState<IFilters[]>(FiltersItems)
   const [filterActive, setFilterActive] = useState('Todo')
 
-  
-  
+  //me traigo lodel input que guardo cristian
+  const [Search, setSearch] = useLocalStorage<string>("text_input", '');
+
   const selectionActive = (selected: IFilters) => {  
     const newSelect = select.map(item => { 
       if (item.id === selected.id) {
@@ -115,25 +103,68 @@ const Catalogue = (props: IBanner) => {
     })
     setSelect(newSelect)
     setFilterActive(selected.id)
-  }
+    setSearch('')
+  } 
+  
+  
 
+  useEffect(() => { 
+    setSearch('')
+  })
+  
 
-  let filteredTargets: any = []
+  let filteredTargets: ICatalogue[] = []
 
-  if (filterActive === 'Todo'){
-    filteredTargets = Fav
+  if (filterActive === 'Todo') {
+    filteredTargets = Fav;      
   }else{
     filteredTargets = Fav.filter(item => {
       const filteredName = item.name.toLowerCase()
       const filterSelected = filterActive.toLowerCase()
 
-      return filteredName === filterSelected
+      if (filteredName === filterSelected) { 
+        return filteredName
+      } else {
+        console.log('error')
+      }
     })
   }
 
   console.log(catalogueFav);
    
   
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     console.log(Search);
+  //   },1000)
+  // }, [Search]);
+
+  // useEffect(() => {
+  //   setInterval(() => { 
+  //     console.log(Search);
+  //   },1000)
+  // }, [Search]);
+  
+
+  // const prueba = (Search:string) => {
+  //   if (Search !== '') {
+  //     filteredTargets = Fav.filter(item => {
+  //       if (item?.name?.toLocaleLowerCase().includes(Search.toLocaleLowerCase())) {
+  //         return true
+  //       } else {
+  //         return false
+  //       }
+  //     })
+  //   }
+  // }
+  
+  // const newFliterWithSearch = filteredTargets?.filter(item => {
+  //   if(item?.name?.toLocaleLowerCase().includes(Search.toLocaleLowerCase())){
+  //     return true 
+  //   }else{
+  //     return false 
+  //   }
+  // })
   
   return (
     <div className={`${primaryFont.className} ${Styles.Catalogue}`}>

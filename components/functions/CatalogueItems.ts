@@ -34,5 +34,5 @@ export const CatalogueItems: ICatalogue[] = [
     price: "15.000",
     favorite: false,
     name:'Esqueleto'
-  },
+  }
 ];
